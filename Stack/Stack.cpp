@@ -20,6 +20,8 @@ void Stack::Push(ItemType item_)
 		temp->item = item_;
 		head = temp;
 	}
+	else
+		return;
 }
 
 void Stack::Pop()
@@ -31,11 +33,15 @@ void Stack::Pop()
 
 		delete temp;
 	}
+	else
+		return;
 }
 
 ItemType Stack::Top()
 {
-	return ItemType();
+	Node* copy = head;
+	return copy->item;
+	delete copy;
 }
 
 bool Stack::IsFull()
@@ -45,5 +51,9 @@ bool Stack::IsFull()
 
 bool Stack::IsEmpty()
 {
-	return false;
+	if (head == nullptr)
+		return true;
+
+	else
+		return false;
 }
