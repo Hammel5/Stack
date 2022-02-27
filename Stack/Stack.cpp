@@ -46,7 +46,17 @@ ItemType Stack::Top()
 
 bool Stack::IsFull()
 {
-	return false;
+	Node* temp;
+	try
+	{
+		temp = new Node;
+		delete temp;
+		return false;
+	}
+	catch (std::bad_alloc& exception)
+	{
+		return true;
+	}
 }
 
 bool Stack::IsEmpty()
