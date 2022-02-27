@@ -6,54 +6,78 @@ using namespace std;
 
 int main()
 {
-    Stack s;
-    ItemType a, b, c, d, e, f;
-    ItemType out;
-    ofstream outFile;
-    outFile.open("StackOutput");
+
+    ifstream inFile;       // file containing operations
+    ofstream outFile;      // file containing output
+    string inFileName;     // input file external name
+    string outFileName;    // output file external name
+    string outputLabel;
+    string command;        // operation to be executed
+
+    int number;
+    ItemType item;
+    Stack stack;
+    int numCommands;
 
 
-    a.Initialize(10);
-    b.Initialize(20);
-    c.Initialize(30);
-    d.Initialize(40);
-    e.Initialize(50);
-    f.Initialize(60);
+    // Prompt for file names, read file names, and prepare files
+    cout << "Enter name of input command file; press return." << endl;
+    cin >> inFileName;
+    inFile.open(inFileName.c_str());
 
+    cout << "Enter name of output file; press return." << endl;
+    cin >> outFileName;
+    outFile.open(outFileName.c_str());
 
-    s.Push(a);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
+    cout << "Enter name of test run; press return." << endl;
+    cin >> outputLabel;
+    outFile << outputLabel << endl;
 
-    s.Push(b);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
+    inFile >> command;
 
-    s.Push(c);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
+    numCommands = 0;
+    while (command != "Quit")
+    {
+        if (command == "Push")
+        {
+            inFile >> number;
+            item.Initialize(number);
+            stack.Push(item);
+            item.Print(outFile);
+            outFile << " has been added to the top" << endl;
+        }
+        else if (command == "Pop")
+        {
+            stack.Pop();
+            item.Print(outFile);
+            outFile << " has been deleted from the top" << endl;
+        }
+        else if (command == "Top")
+        {
+            stack.Top();  
+        }
+        else if (command == "IsFull")
+        {
+            if (stack.IsFull())
+                outFile << "List is full." << endl;
+            else outFile << "List is not full." << endl;
+        }
+        else if (command == "IsEmpty")
+        {
+            if (stack.IsEmpty())
+                outFile << "List is empty." << endl;
+            else outFile << "List is not empty." << endl;
+        }
+        else cout << "Command not recognized." << endl;
 
-    s.Pop();
-    outFile << "You have deleted the top number" << endl;
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
+        numCommands++;
+        cout << command;
+        cout << " Command number " << numCommands << " completed." << endl;
+        inFile >> command;
+    }
 
-    s.Push(d);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
-
-    s.Push(e);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
-
-    s.Push(f);
-    out = s.Top();
-    out.Print(outFile);
-    outFile << " Is the top number" << endl;
+    cout << endl << "Testing completed." << endl;
+    inFile.close();
+    outFile.close();
+    return 0;
 }
