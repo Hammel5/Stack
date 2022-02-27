@@ -1,5 +1,6 @@
 #include "Stack.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -8,6 +9,9 @@ int main()
     Stack s;
     ItemType a, b, c, d, e, f;
     ItemType out;
+    ofstream outFile;
+    outFile.open("StackOutput");
+
 
     a.Initialize(10);
     b.Initialize(20);
@@ -18,16 +22,38 @@ int main()
 
 
     s.Push(a);
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Push(b);
-    s.Top();
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Push(c);
-    s.Top();
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Pop();
-    s.Top();
+    outFile << "You have deleted the top number" << endl;
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Push(d);
-    s.Top();
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Push(e);
-    s.Top();
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
+
     s.Push(f);
-    s.Top();
+    out = s.Top();
+    out.Print(outFile);
+    outFile << " Is the top number" << endl;
 }
