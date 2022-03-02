@@ -7,17 +7,17 @@ using namespace std;
 int main()
 {
 
-    ifstream inFile;       // file containing operations
-    ofstream outFile;      // file containing output
-    string inFileName;     // input file external name
-    string outFileName;    // output file external name
-    string outputLabel;
-    string command;        // operation to be executed
+    ifstream inFile;        // file containing operations
+    ofstream outFile;       // file containing output
+    string inFileName;      // input file external name
+    string outFileName;     // output file external name
+    string outputLabel;     // the label at the top of the output file
+    string command;         // operation to be executed
 
-    int number;
-    ItemType item;
-    Stack stack;
-    int numCommands;
+    int number;             // the value put into the Item
+    ItemType item;          // the item that will be placed 
+    Stack stack;            // the list of items where the last in  
+    int numCommands;        // the number of commands that are excuted
 
 
     // Prompt for file names, read file names, and prepare files
