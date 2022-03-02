@@ -16,7 +16,7 @@ int main()
 
     int number;             // the value put into the Item
     ItemType item;          // the item that will be placed 
-    Stack stack;            // the list of items where the last in  
+    Stack stack;            // the list of items where the last in is first out
     int numCommands;        // the number of commands that are excuted
 
 
@@ -36,9 +36,9 @@ int main()
     inFile >> command;
 
     numCommands = 0;
-    while (command != "Quit")
+    while (command != "Quit") // if quit is inputted the program will quit
     {
-        if (command == "Push")
+        if (command == "Push") // if push is inputted an item will be added and it will be printed on the screen
         {
             inFile >> number;
             item.Initialize(number);
@@ -46,29 +46,29 @@ int main()
             item.Print(outFile);
             outFile << " has been added to the top" << endl;
         }
-        else if (command == "Pop")
+        else if (command == "Pop") // if pop is inputted the first item will be deleted and it will be printed on the screen
         {
             stack.Pop();
             item.Print(outFile);
             outFile << " has been deleted from the top" << endl;
         }
-        else if (command == "Top")
+        else if (command == "Top") // if top is inputted the top item will be printed on the screen
         {
             stack.Top();  
         }
-        else if (command == "IsFull")
+        else if (command == "IsFull") // if isFull is inputted it will check if the stack is full and it will be printed on the screen
         {
             if (stack.IsFull())
                 outFile << "List is full." << endl;
             else outFile << "List is not full." << endl;
         }
-        else if (command == "IsEmpty")
+        else if (command == "IsEmpty") // if isEmpty is inputted it will check if the stack is empty and it will be printed on the screen
         {
             if (stack.IsEmpty())
                 outFile << "List is empty." << endl;
             else outFile << "List is not empty." << endl;
         }
-        else cout << "Command not recognized." << endl;
+        else cout << "Command not recognized." << endl; // will be outputted if no command is recognized
 
         numCommands++;
         cout << command;
